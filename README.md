@@ -1,2 +1,6 @@
-# Heart-Disease-Prediction
-Explore a modular, end-to-end solution for heart disease prediction in this repository. From problem definition to model evaluation, dive into detailed exploratory data analysis. Experience seamless integration with MLOps tools like DVC, MLflow, and Docker for enhanced workflow and reproducibility.
+# Heart Disease Prediction
+
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![Framework](https://img.shields.io/badge/Flask-2.0%2B-green)
+
+A machine learning pipeline for predicting heart disease.
