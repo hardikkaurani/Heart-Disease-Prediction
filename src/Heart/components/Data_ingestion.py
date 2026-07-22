@@ -18,3 +18,6 @@ class DataIngestion:
             data = pd.read_csv(os.path.join("Notebook_Experiments", "Data", "heart.csv"))
         os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
             data.to_csv(self.ingestion_config.raw_data_path, index=False)
+
+            from sklearn.model_selection import train_test_split
+            train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
