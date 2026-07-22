@@ -9,3 +9,7 @@ from urllib.parse import urlparse
 from src.Heart.exception import customexception
 from src.Heart.logger import logging
 from src.Heart.utils.utils import load_object
+
+class ModelEvaluation:
+    def __init__(self):
+        pass
