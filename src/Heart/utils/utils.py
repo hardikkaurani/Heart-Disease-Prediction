@@ -6,6 +6,7 @@ import pandas as pd
 
 from src.Heart.exception import customexception
 from src.Heart.logger import logging
+from sklearn.metrics import accuracy_score, r2_score
 
 def save_object(file_path, obj):
     try:
