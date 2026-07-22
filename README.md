@@ -19,3 +19,8 @@ git clone https://github.com/hardikkaurani/Heart-Disease-Prediction.git
 pip install -r requirements.txt
 python app.py
 ```
+
+## Data Version Control (DVC)
+```bash
+dvc repro
+```
