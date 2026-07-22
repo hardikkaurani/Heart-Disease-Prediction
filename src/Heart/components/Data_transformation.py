@@ -30,3 +30,12 @@ class DataTransformation:
             return preprocessor
         except Exception as e:
             raise customexception(e, sys)
+
+    def initiate_data_transformation(self, train_path, test_path):
+        try:
+            train_df = pd.read_csv(train_path)
+            test_df = pd.read_csv(test_path)
+            preprocessing_obj = self.get_data_transformer_object()
+            return train_df, test_df
+        except Exception as e:
+            raise customexception(e, sys)
