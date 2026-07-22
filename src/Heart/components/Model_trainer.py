@@ -32,6 +32,12 @@ class ModelTrainer:
                 "Logistic Regression": LogisticRegression(),
                 "SVC": SVC()
             }
-            return models
+            params = {
+                "Random Forest": {'n_estimators': [8, 16, 32, 64, 128]},
+                "Decision Tree": {'criterion': ['gini', 'entropy']},
+                "Logistic Regression": {'C': [0.1, 1.0, 10.0]},
+                "SVC": {'C': [0.1, 1.0, 10.0]}
+            }
+            return models, params
         except Exception as e:
             raise customexception(e, sys)
