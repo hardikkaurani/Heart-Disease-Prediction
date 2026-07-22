@@ -6,7 +6,11 @@ from sklearn.svm import SVC
 from xgboost import XGBClassifier
 from dataclasses import dataclass
 from src.Heart.logger import logging
-from catboost import CatBoostClassifier
+try:
+    from catboost import CatBoostClassifier
+except ImportError:
+    CatBoostClassifier = None
+
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
