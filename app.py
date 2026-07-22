@@ -1,22 +1,46 @@
 from flask import Flask, request, render_template
-import numpy as np
-import pandas as pd
-
 from src.Heart.pipeline.Prediction_pipeline import CustomData, PredictPipeline
 
-application = Flask(__name__)
-app = application
+app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/predictdata', methods=['GET', 'POST'])
-def predict_datapoint():
-    if request.method == 'GET':
-        return render_template('index.html')
-    else:
+# Define the home route
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
         try:
-            pass
+            # Validate and convert form data to CustomData object
+            data = CustomData(
+                age=request.form.get("age"),
+                sex=request.form.get("sex"),
+                cp=(request.form.get("cp")),
+                trestbps=(request.form.get("trestbps")),
+                chol=(request.form.get("chol")),
+                fbs=request.form.get("fbs"),
+                restecg=request.form.get("restecg"),
+                thalach=(request.form.get("thalach")),
+                exang=request.form.get("exang"),
+                oldpeak=request.form.get("oldpeak"),
+                slope=request.form.get("slope"),
+                ca=request.form.get("ca"),
+                thal=(request.form.get("thal"))
+            )
+
+            final_data = data.get_data_as_dataframe()
+            # Make prediction
+            predict_pipeline = PredictPipeline()
+            pred = predict_pipeline.predict(final_data)
+            result = round(pred[0], 2)
+            return render_template("result.html", final_result=result)
+
         except Exception as e:
-            return render_template('error.html', error=str(e))
+            # Handle exceptions gracefully
+            error_message = f"Error during prediction: {str(e)}"
+            return render_template("error.html", error_message=error_message)
+
+    else:
+        # Render the initial page
+        return render_template("index.html")
+
+# Execution begins
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=8080, debug=True)
