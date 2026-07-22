@@ -25,6 +25,7 @@ class ModelEvaluation:
                 mlflow.log_metric("Precision Score", precision)
                 mlflow.log_metric("Recall Score", recall)
                 mlflow.log_metric("F1 Score", f1)
+                mlflow.sklearn.log_model(model, "Model")
                 return acc
 
     def initiate_model_evaluation(self, train_array, test_array):
@@ -39,6 +40,7 @@ class ModelEvaluation:
                 mlflow.log_metric("Precision Score", precision)
                 mlflow.log_metric("Recall Score", recall)
                 mlflow.log_metric("F1 Score", f1)
+                mlflow.sklearn.log_model(model, "Model")
                 return acc
         except Exception as e:
             raise customexception(e, sys)
