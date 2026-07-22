@@ -20,7 +20,12 @@ class ModelEvaluation:
         precision = precision_score(actual, pred)
         recall = recall_score(actual, pred)
         f1 = f1_score(actual, pred)
-        return acc, precision, recall, f1
+        with mlflow.start_run():
+                mlflow.log_metric("Testing Accuracy", acc)
+                mlflow.log_metric("Precision Score", precision)
+                mlflow.log_metric("Recall Score", recall)
+                mlflow.log_metric("F1 Score", f1)
+                return acc
 
     def initiate_model_evaluation(self, train_array, test_array):
         try:
@@ -29,6 +34,11 @@ class ModelEvaluation:
             model = load_object(model_path)
             predictions = model.predict(X_test)
             (acc, precision, recall, f1) = self.eval_metrics(y_test, predictions)
-            return acc, precision, recall, f1
+            with mlflow.start_run():
+                mlflow.log_metric("Testing Accuracy", acc)
+                mlflow.log_metric("Precision Score", precision)
+                mlflow.log_metric("Recall Score", recall)
+                mlflow.log_metric("F1 Score", f1)
+                return acc
         except Exception as e:
             raise customexception(e, sys)
