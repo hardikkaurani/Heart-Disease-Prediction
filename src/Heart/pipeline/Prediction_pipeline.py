@@ -20,3 +20,19 @@ class PredictPipeline:
             return preds
         except Exception as e:
             raise customexception(e, sys)
+
+class CustomData:
+    def __init__(self, age:int, sex:int, cp:int, trestbps:int, chol:int, fbs:int, restecg:int, thalach:int, exang:int, oldpeak:float, slope:int, ca:int, thal:int):
+        self.age = age
+        self.sex = sex
+        self.cp = cp
+        self.trestbps = trestbps
+        self.chol = chol
+        self.fbs = fbs
+        self.restecg = restecg
+        self.thalach = thalach
+        self.exang = exang
+        self.oldpeak = oldpeak
+        self.slope = slope
+        self.ca = ca
+        self.thal = thal
