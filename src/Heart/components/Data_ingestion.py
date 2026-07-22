@@ -12,3 +12,9 @@ class DataIngestionConfig:
 class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
+
+    def initiate_data_ingestion(self):
+        try:
+            data = pd.read_csv(os.path.join("Notebook_Experiments", "Data", "heart.csv"))
+        except Exception as e:
+            raise e
