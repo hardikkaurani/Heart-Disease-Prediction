@@ -1,22 +1,21 @@
-import os
-import sys
-from src.Heart.logger import logging
-from src.Heart.exception import customexception
 from src.Heart.components.Data_ingestion import DataIngestion
 from src.Heart.components.Data_transformation import DataTransformation
 from src.Heart.components.Model_trainer import ModelTrainer
+from src.Heart.components.Model_evaluation import ModelEvaluation
 
-class TrainPipeline:
-    def __init__(self):
-        pass
 
-    def run_pipeline(self):
-        try:
-            ingestion = DataIngestion()
-            test_data, train_data = ingestion.initiate_data_ingestion()
-            transformation = DataTransformation()
-            train_arr, test_arr = transformation.initiate_data_transformation(train_data, test_data)
-            trainer = ModelTrainer()
-            trainer.initiate_model_trainer(train_arr, test_arr)
-        except Exception as e:
-            raise customexception(e, sys)
+#Data ingestion Pipeline
+obj=DataIngestion()
+train_data_path,test_data_path=obj.initiate_data_ingestion()
+
+# Data Transformation Pipeline
+data_transformation=DataTransformation()
+train_arr,test_arr=data_transformation.initialize_data_transformation(train_data_path,test_data_path)
+
+# Model Training Pipeline
+model_trainer_obj=ModelTrainer()
+model_trainer_obj.initate_model_training(train_arr,test_arr)
+
+# Model Evaluation Pipeline
+model_eval_obj = ModelEvaluation()
+model_eval_obj.initate_model_evaluation(train_arr,test_arr)
