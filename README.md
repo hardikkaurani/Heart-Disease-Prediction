@@ -12,3 +12,10 @@ A machine learning pipeline for predicting heart disease.
 
 ## Dataset & Features
 13 clinical feature inputs (age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal) predicting target heart disease.
+
+## Local Setup & Installation
+```bash
+git clone https://github.com/hardikkaurani/Heart-Disease-Prediction.git
+pip install -r requirements.txt
+python app.py
+```
