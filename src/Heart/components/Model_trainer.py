@@ -38,6 +38,9 @@ class ModelTrainer:
                 "Logistic Regression": {'C': [0.1, 1.0, 10.0]},
                 "SVC": {'C': [0.1, 1.0, 10.0]}
             }
-            return models, params
+            model_report:dict = evaluate_models(
+                X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models
+            )
+            return model_report
         except Exception as e:
             raise customexception(e, sys)
