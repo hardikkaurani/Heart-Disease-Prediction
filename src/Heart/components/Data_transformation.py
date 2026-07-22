@@ -1,3 +1,6 @@
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 import os
 import sys
 import numpy as np
@@ -14,3 +17,13 @@ class DataTransformationConfig:
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
+
+    def get_data_transformer_object(self):
+        try:
+            num_pipeline = Pipeline(steps=[
+                ('imputer', SimpleImputer(strategy='median')),
+                ('scaler', StandardScaler())
+            ])
+            return num_pipeline
+        except Exception as e:
+            raise customexception(e, sys)
