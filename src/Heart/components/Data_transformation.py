@@ -6,3 +6,7 @@ from dataclasses import dataclass
 
 from src.Heart.logger import logging
 from src.Heart.exception import customexception
+
+@dataclass
+class DataTransformationConfig:
+    preprocessor_obj_file_path = os.path.join("Artifacts", "preprocessor.pkl")
