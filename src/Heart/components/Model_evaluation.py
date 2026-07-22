@@ -41,15 +41,16 @@ class ModelEvaluation:
                     mlflow.log_metric("Recall Score", recall)
                     mlflow.log_metric("F1 Score", f1)
 
-                    if tracking_url_type_store != "file":
-                        mlflow.sklearn.log_model(model, "Model", registered_model_name="ml_model")
-                    else:
-                        mlflow.sklearn.log_model(model, "Model")
             except Exception as mlflow_err:
                 logging.info(f"MLflow tracking skipped or unavailable: {mlflow_err}")
 
         except Exception as e:
             raise customexception(e, sys)
+
+    def initiate_model_evaluation(self, train_array, test_array):
+        return self.initate_model_evaluation(train_array, test_array)
+
+
 
 
 
