@@ -4,3 +4,8 @@
 ![Framework](https://img.shields.io/badge/Flask-2.0%2B-green)
 
 A machine learning pipeline for predicting heart disease.
+
+## System Architecture
+```
+[Data Ingestion] -> [Data Transformation] -> [Model Trainer] -> [Model Evaluation] -> [Flask App]
+```
