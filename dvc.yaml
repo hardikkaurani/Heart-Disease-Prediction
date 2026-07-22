@@ -1,0 +1,10 @@
+stages:
+  data_ingestion:
+    cmd: python src/Heart/components/Data_ingestion.py
+    deps:
+    - src/Heart/components/Data_ingestion.py
+    - Notebook_Experiments/Data/heart.csv
+    outs:
+    - Artifacts/raw_data.csv
+    - Artifacts/train_data.csv
+    - Artifacts/test_data.csv
