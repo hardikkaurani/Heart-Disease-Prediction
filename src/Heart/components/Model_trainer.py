@@ -44,6 +44,9 @@ class ModelTrainer:
             best_model_score = max(sorted(model_report.values()))
             best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
             best_model = models[best_model_name]
-            return best_model_name, best_model_score
+            if best_model_score < 0.6:
+                raise customexception("No best model found", sys)
+            logging.info(f"Best model found on both training and testing dataset: {best_model_name}")
+            return best_model
         except Exception as e:
             raise customexception(e, sys)
