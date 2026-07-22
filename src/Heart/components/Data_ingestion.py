@@ -21,3 +21,6 @@ class DataIngestion:
 
             from sklearn.model_selection import train_test_split
             train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
+
+            train_data.to_csv(self.ingestion_config.train_data_path, index=False)
+            test_data.to_csv(self.ingestion_config.test_data_path, index=False)
