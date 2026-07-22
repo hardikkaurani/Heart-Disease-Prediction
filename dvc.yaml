@@ -8,3 +8,11 @@ stages:
     - Artifacts/raw_data.csv
     - Artifacts/train_data.csv
     - Artifacts/test_data.csv
+  data_transformation:
+    cmd: python src/Heart/components/Data_transformation.py
+    deps:
+    - src/Heart/components/Data_transformation.py
+    - Artifacts/train_data.csv
+    - Artifacts/test_data.csv
+    outs:
+    - Artifacts/preprocessor.pkl
