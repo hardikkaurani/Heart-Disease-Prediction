@@ -9,3 +9,6 @@ A machine learning pipeline for predicting heart disease.
 ```
 [Data Ingestion] -> [Data Transformation] -> [Model Trainer] -> [Model Evaluation] -> [Flask App]
 ```
+
+## Dataset & Features
+13 clinical feature inputs (age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal) predicting target heart disease.
