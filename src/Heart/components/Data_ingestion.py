@@ -16,5 +16,5 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         try:
             data = pd.read_csv(os.path.join("Notebook_Experiments", "Data", "heart.csv"))
-        except Exception as e:
-            raise e
+        os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
+            data.to_csv(self.ingestion_config.raw_data_path, index=False)
