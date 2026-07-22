@@ -21,3 +21,14 @@ class ModelEvaluation:
         recall = recall_score(actual, pred)
         f1 = f1_score(actual, pred)
         return acc, precision, recall, f1
+
+    def initiate_model_evaluation(self, train_array, test_array):
+        try:
+            X_test, y_test = test_array[:, :-1], test_array[:, -1]
+            model_path = os.path.join("Artifacts", "model.pkl")
+            model = load_object(model_path)
+            predictions = model.predict(X_test)
+            (acc, precision, recall, f1) = self.eval_metrics(y_test, predictions)
+            return acc, precision, recall, f1
+        except Exception as e:
+            raise customexception(e, sys)
