@@ -19,6 +19,7 @@ def save_object(file_path, obj):
 
 def load_object(file_path):
     try:
+        logging.info(f'Loading object from {file_path}')
         with open(file_path, "rb") as file_obj:
             return pickle.load(file_obj)
     except Exception as e:
