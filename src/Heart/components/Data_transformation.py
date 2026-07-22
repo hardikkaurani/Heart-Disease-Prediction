@@ -1,3 +1,4 @@
+from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
@@ -24,6 +25,8 @@ class DataTransformation:
                 ('imputer', SimpleImputer(strategy='median')),
                 ('scaler', StandardScaler())
             ])
-            return num_pipeline
+            num_cols = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
+            preprocessor = ColumnTransformer([('num_pipeline', num_pipeline, num_cols)])
+            return preprocessor
         except Exception as e:
             raise customexception(e, sys)
