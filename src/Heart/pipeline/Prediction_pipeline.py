@@ -36,3 +36,15 @@ class CustomData:
         self.slope = slope
         self.ca = ca
         self.thal = thal
+
+    def get_data_as_data_frame(self):
+        try:
+            custom_data_input_dict = {
+                "age": [self.age], "sex": [self.sex], "cp": [self.cp],
+                "trestbps": [self.trestbps], "chol": [self.chol], "fbs": [self.fbs],
+                "restecg": [self.restecg], "thalach": [self.thalach], "exang": [self.exang],
+                "oldpeak": [self.oldpeak], "slope": [self.slope], "ca": [self.ca], "thal": [self.thal]
+            }
+            return pd.DataFrame(custom_data_input_dict)
+        except Exception as e:
+            raise customexception(e, sys)
