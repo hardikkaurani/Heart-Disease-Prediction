@@ -1,7 +1,7 @@
 from src.Heart.components.Data_ingestion import DataIngestion
 from src.Heart.components.Data_transformation import DataTransformation
 from src.Heart.components.Model_trainer import ModelTrainer
-from src.Heart.components.Model_evaluation import ModelEvaluation
+from src.Heart.components.model_evaluation import ModelEvaluation
 
 
 #Data ingestion Pipeline

@@ -1,5 +1,11 @@
 import os
 import sys
+# Add the project root to sys.path to allow imports when script is run directly
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from urllib.parse import urlparse
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from src.Heart.logger import logging

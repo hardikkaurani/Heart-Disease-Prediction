@@ -8,21 +8,21 @@ app = Flask(__name__)
 def home():
     if request.method == "POST":
         try:
-            # Validate and convert form data to CustomData object
+            # Validate and convert form data to CustomData object with proper numeric casting
             data = CustomData(
-                age=request.form.get("age"),
-                sex=request.form.get("sex"),
-                cp=(request.form.get("cp")),
-                trestbps=(request.form.get("trestbps")),
-                chol=(request.form.get("chol")),
-                fbs=request.form.get("fbs"),
-                restecg=request.form.get("restecg"),
-                thalach=(request.form.get("thalach")),
-                exang=request.form.get("exang"),
-                oldpeak=request.form.get("oldpeak"),
-                slope=request.form.get("slope"),
-                ca=request.form.get("ca"),
-                thal=(request.form.get("thal"))
+                age=int(request.form.get("age", 0)),
+                sex=int(request.form.get("sex", 0)),
+                cp=int(request.form.get("cp", 0)),
+                trestbps=int(request.form.get("trestbps", 0)),
+                chol=int(request.form.get("chol", 0)),
+                fbs=int(request.form.get("fbs", 0)),
+                restecg=int(request.form.get("restecg", 0)),
+                thalach=int(request.form.get("thalach", 0)),
+                exang=int(request.form.get("exang", 0)),
+                oldpeak=float(request.form.get("oldpeak", 0.0)),
+                slope=int(request.form.get("slope", 0)),
+                ca=int(request.form.get("ca", 0)),
+                thal=int(request.form.get("thal", 0))
             )
 
             final_data = data.get_data_as_dataframe()
